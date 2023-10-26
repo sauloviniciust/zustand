@@ -1,80 +1,23 @@
 import { create } from 'zustand';
+import { cardsData } from './CardsData';
 
-const initialItens = [
-    {
-        id: "p01",
-        name: "Yoga mat",
-        price: 19.99
-        },
-        {
-        id: "p2",
-        name: "Smartphone case",
-        price: 12.99
-        },
-        
-        {
-        id: "p3",
-        name: "Wireless Bluetooth headphones",
-        price: 49.99
-        },
-        
-        {
-        id: "p4",
-        name: "Coffee maker",
-        price: 39.95
-        },
-        
-        {
-        id: "p5",
-        name: "Laptop backpack",
-        price: 34.99
-        },
-        
-        {
-        id: "p6",
-        name: "HD LED TV",
-        price: 349.99
-        },
-        
-        {
-        id: "p7",
-        name: "Digital camera",
-        price: 199.99
-        },
-        
-        {
-        id: "p8",
-        name: "Fitness tracker",
-        price: 69.99
-        },
-        
-        {
-        id: "p9",
-        name: "Kitchen knife set",
-        price: 49.95
-        },
-        
-        {
-        id: "p10",
-        name: "Men's leather wallet",
-        price: 24.99
-        },
-        
-       
- 
-]
+
 
 type Item = {
-    id: string;
-    name: string;
-    price: number;
+    id: string,
+    product: string,
+    about: string,
+    price: number,
+    src: string,
+    alt: string,
+    item: string,
 }
 
 
 type CartStore  = {
     availableItems: Item[];
     cart: Item[];
-    addToCart: (item: Item) => void;
+    addToCart: (product: Item) => void;
     removeFromCart:(id: string) => void;
 }
 
@@ -82,7 +25,7 @@ export const useCartStore = create<CartStore>((set) => {
     return {
         cart: [],
 
-        availableItems: initialItens,
+        availableItems: cardsData,
 
         addToCart: (item) => set((state) => (
             {cart: [...state.cart, item] })),
